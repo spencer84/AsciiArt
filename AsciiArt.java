@@ -1,24 +1,37 @@
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class AsciiArt {
 
-    
-    public static verifyImage(String[] image){
-        /* Identify if an arg is an image */
-        String jpeg = ".jpeg";
-        if (jpeg in image){
-            return boolean true
-        };
-
+    public static void outputFile(String fileName) {
+        /* Rename the file before writing output */
+        String newName = fileName.concat("_AsciiArt");
+            System.out.println(newName);
     }
-    public static void outputFile(args) {
-        for (int i = 0; i < args.length; i++){
-            System.out.println(args[i]);
+
+    public static void openFile(String fileName){
+        /* Open the file from the input string */
+        try{BufferedImage targetImage = ImageIO.read(new File(fileName));
         }
+
+        catch(IOException e){
+            System.out.println("No file found");
+        }
+        
     }
     public static void main(String[] args) {
         /*Create an output text file */
-        outputFile();}
+        try{
+            String fileName = args[0];
+            outputFile(fileName);
+        }catch(final ArrayIndexOutOfBoundsException e){
+            System.out.println("No file selected");
+            return;
+        }
+        
+        }
     
 
     // /*Upload an image from a given file name*/
