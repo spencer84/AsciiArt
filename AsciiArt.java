@@ -25,13 +25,22 @@ public class AsciiArt {
         return null;
         
     }
-    public static void writeAnscii(BufferedImage targetimage){
+    public static void writeAnscii(BufferedImage targetImage){
         /* Need to get the height and width of the target image, then parse through */
+        int height = targetImage.getHeight();
+        int width = targetImage.getWidth();
+        // Create a text file to write ascii output to
+        // Define pixel to Ascii mapping here
+        // Loop through height
+        // Loop through Width
+        //
     }
     public static void main(String[] args) {
         /*Create an output text file */
         try{
             String fileName = args[0];
+            BufferedImage targetFile = openFile(fileName);
+
             outputFile(fileName);
         }catch(final ArrayIndexOutOfBoundsException e){
             System.out.println("No file selected");
