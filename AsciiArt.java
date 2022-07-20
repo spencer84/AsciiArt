@@ -11,15 +11,22 @@ public class AsciiArt {
             System.out.println(newName);
     }
 
-    public static void openFile(String fileName){
-        /* Open the file from the input string */
+    public static BufferedImage openFile(String fileName){
+        /* Open the file from the input string.
+         * Return the BufferedImage object if it exists.
+        */
         try{BufferedImage targetImage = ImageIO.read(new File(fileName));
+            return targetImage;
         }
 
         catch(IOException e){
             System.out.println("No file found");
         }
+        return null;
         
+    }
+    public static void writeAnscii(BufferedImage targetimage){
+        /* Need to get the height and width of the target image, then parse through */
     }
     public static void main(String[] args) {
         /*Create an output text file */
