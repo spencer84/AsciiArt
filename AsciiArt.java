@@ -5,10 +5,11 @@ import java.io.IOException;
 
 public class AsciiArt {
 
-    public static void outputFile(String fileName) {
+    public static String outputFile(String fileName) {
         /* Rename the file before writing output */
         String newName = fileName.concat("_AsciiArt");
             System.out.println(newName);
+            return newName;
     }
 
     public static BufferedImage openFile(String fileName){
@@ -21,14 +22,17 @@ public class AsciiArt {
 
         catch(IOException e){
             System.out.println("No file found");
+            return null;
         }
-        return null;
+        
         
     }
-    public static void writeAnscii(BufferedImage targetImage){
+    public static void writeAnscii(BufferedImage targetImage, String fileName){
         /* Need to get the height and width of the target image, then parse through */
         int height = targetImage.getHeight();
         int width = targetImage.getWidth();
+        String outputName  = outputFile(fileName);
+        File outputText = new File(outputName);
         // Create a text file to write ascii output to
         // Define pixel to Ascii mapping here
         // Loop through height
