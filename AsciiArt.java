@@ -2,14 +2,29 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 
 public class AsciiArt {
 
     public static String outputFile(String fileName) {
         /* Rename the file before writing output */
-        String newName = fileName.concat("_AsciiArt");
+        String asciiString = "_AsciiArt";
+        //String newName = fileName.concat("_AsciiArt");
+        // If there is a . in the file name, split string before renaming
+        if (fileName.contains(".")){
+            String[] parts = fileName.split(".");
+            String prefix = parts[0];
+            String fileExt = parts[1];
+            String newName = prefix + asciiString + fileExt; 
             System.out.println(newName);
-            return newName;
+        }
+        else {
+            String newName = fileName + asciiString; 
+            System.out.println(newName);
+        }
+        return newName;
+        
+            
     }
 
     public static BufferedImage openFile(String fileName){
@@ -33,7 +48,7 @@ public class AsciiArt {
         int width = targetImage.getWidth();
         String outputName  = outputFile(fileName);
         File outputText = new File(outputName);
-        // Create a text file to write ascii output to
+        HashMap asciiMap = new HashMap();
         // Define pixel to Ascii mapping here
         // Loop through height
         // Loop through Width
