@@ -17,12 +17,14 @@ public class AsciiArt {
             String fileExt = parts[1];
             String newName = prefix + asciiString + fileExt; 
             System.out.println(newName);
+            return newName;
         }
         else {
             String newName = fileName + asciiString; 
             System.out.println(newName);
+            return newName;
         }
-        return newName;
+        
         
             
     }
