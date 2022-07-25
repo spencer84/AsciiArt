@@ -24,9 +24,6 @@ public class AsciiArt {
             System.out.println(newName);
             return newName;
         }
-        
-        
-            
     }
 
     public static BufferedImage openFile(String fileName){
@@ -50,7 +47,14 @@ public class AsciiArt {
         int width = targetImage.getWidth();
         String outputName  = outputFile(fileName);
         File outputText = new File(outputName);
-        HashMap asciiMap = new HashMap();
+        //HashMap asciiMap = new HashMap();
+        for (int h = 0; h < height; h++){
+            for (int w = 0; w< width; w++){
+                int rgb = targetImage.getRGB(h, w);
+                System.out.println(rgb);
+            }
+        }
+        
         // Define pixel to Ascii mapping here
         // Loop through height
         // Loop through Width
@@ -59,12 +63,15 @@ public class AsciiArt {
     public static void main(String[] args) {
         /*Create an output text file */
         try{
-            String fileName = args[0];
+            String fileName = "corgi.jpeg";
+            // String fileName = args[0];
             BufferedImage targetFile = openFile(fileName);
-
-            outputFile(fileName);
+            System.out.println("Corgi file opened");
+            String newName = outputFile(fileName);
+            System.out.println(newName);
+            writeAnscii(targetFile, fileName);
         }catch(final ArrayIndexOutOfBoundsException e){
-            System.out.println("No file selected");
+            //System.out.println("No file selected");
             return;
         }
         
