@@ -16,7 +16,7 @@ public class AsciiArt {
             String prefix = parts[0];
             String fileExt = parts[1];
             String newName = prefix + asciiString + fileExt; 
-            System.out.println(newName);
+            System.out.print(newName);
             return newName;
         }
         else {
@@ -68,8 +68,10 @@ public class AsciiArt {
             BufferedImage targetFile = openFile(fileName);
             System.out.println("Corgi file opened");
             String newName = outputFile(fileName);
-            System.out.println(newName);
+            System.out.println("File Named");
+            System.out.print(newName);
             writeAnscii(targetFile, fileName);
+            System.out.println("Function called");
         }catch(final ArrayIndexOutOfBoundsException e){
             //System.out.println("No file selected");
             return;
