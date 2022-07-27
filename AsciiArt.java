@@ -14,12 +14,11 @@ public class AsciiArt {
         if (fileName.contains(".")){
             String[] parts = fileName.split("\\.");
             String prefix = parts[0];
-            String fileExt = parts[1];
-            String newName = prefix + asciiString + fileExt; 
+            String newName = prefix + asciiString + ".txt"; 
             return newName;
         }
         else {
-            String newName = fileName + asciiString; 
+            String newName = fileName + asciiString + ".txt"; 
             return newName;
         }
     }
@@ -39,25 +38,35 @@ public class AsciiArt {
         
         
     }
-    // public static void writeAnscii(BufferedImage targetImage, String fileName){
-    //     /* Need to get the height and width of the target image, then parse through */
-    //     int height = targetImage.getHeight();
-    //     int width = targetImage.getWidth();
-    //     String outputName  = outputFile(fileName);
-    //     File outputText = new File(outputName);
-    //     //HashMap asciiMap = new HashMap();
-    //     for (int h = 0; h < height; h++){
-    //         for (int w = 0; w< width; w++){
-    //             int rgb = targetImage.getRGB(h, w);
-    //             System.out.println(rgb);
-    //         }
-    //     }
-        
+    public static void writeAnscii(BufferedImage targetImage, String fileName){
+        /* Need to get the height and width of the target image, then parse through */
+        int height = targetImage.getHeight();
+        int width = targetImage.getWidth();
+        String outputName  = outputFile(fileName);
+        File outputText = new File(outputName);
+        // Create a HashMap and add Ascii Characters corresponding to brightness
+        HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
+        String mapVals = ".,-~:;=!*#@";
+        for (int i = 0;i < mapVals.length(); i++){
+                asciiMap.put(i, mapVals.charAt(i));
+        }
+        for (int h = 0; h < height; h++){
+            for (int w = 0; w< width; w++){
+                int rgb = targetImage.getRGB(h, w);
+                int r = (rgb >> 16) & 0xFF;
+                int g = (rgb >> 8) & 0xFF;
+                int b = (rgb & 0xff);
+                int grayScale = r+g+b;
+                System.out.println(grayScale);
+            }
+        }
+
+  
         // Define pixel to Ascii mapping here
         // Loop through height
         // Loop through Width
-        //
-    //}
+        
+    }
     public static void main(String[] args) {
         /*Create an output text file */
         try{
@@ -69,7 +78,7 @@ public class AsciiArt {
             String newName = outputFile(fileName);
             System.out.println("File Named");
             System.out.print(newName);
-            // writeAnscii(targetFile, fileName);
+            writeAnscii(targetFile, fileName);
             // System.out.println("Function called");
         }catch(final ArrayIndexOutOfBoundsException e){
             //System.out.println("No file selected");
