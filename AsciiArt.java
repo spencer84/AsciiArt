@@ -46,26 +46,32 @@ public class AsciiArt {
         File outputText = new File(outputName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
-        String mapVals = ".,-~:;=!*#@";
+        String mapVals = ".,-~:;=!*#$@";
         for (int i = 0;i < mapVals.length(); i++){
                 asciiMap.put(i, mapVals.charAt(i));
         }
+        // Iterate through each pixel, convert to a rough grayscale, map to an Ascii value, then write to new file
         for (int h = 0; h < height; h++){
+            String line = new String();
             for (int w = 0; w< width; w++){
                 int rgb = targetImage.getRGB(h, w);
                 int r = (rgb >> 16) & 0xFF;
                 int g = (rgb >> 8) & 0xFF;
                 int b = (rgb & 0xff);
-                int grayScale = r+g+b;
+                int grayScale = (r+g+b)/64;
+                try{char asciiVal = asciiMap.get(grayScale);
+                line += asciiVal;}
+                catch(java.lang.NullPointerException np){
                 System.out.println(grayScale);
             }
+
+                
+            }
+            System.out.println(line);
+
         }
 
-  
-        // Define pixel to Ascii mapping here
-        // Loop through height
-        // Loop through Width
-        
+
     }
     public static void main(String[] args) {
         /*Create an output text file */
