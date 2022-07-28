@@ -8,9 +8,8 @@ import java.io.FileWriter;
 public class AsciiArt {
 
     public static String outputFile(String fileName) {
-        /* Rename the file before writing output */
+        /* Produce output file name before writing output */
         String asciiString = "_AsciiArt";
-        //String newName = fileName.concat("_AsciiArt");
         // If there is a . in the file name, split string before renaming
         if (fileName.contains(".")){
             String[] parts = fileName.split("\\.");
@@ -44,7 +43,6 @@ public class AsciiArt {
         int height = targetImage.getHeight();
         int width = targetImage.getWidth();
         String outputName  = outputFile(fileName);
-        File outputText = new File(outputName);
         try{FileWriter myWriter = new FileWriter(outputName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
@@ -54,6 +52,7 @@ public class AsciiArt {
         }
         // Iterate through each pixel, convert to a rough grayscale, map to an Ascii value, then write to new file
         for (int w = 0; w< width; w++){
+            // For every line of pixels, initialize a new line of text to be written into the file
             String line = System.lineSeparator() + "";
             for (int h = 0; h < height; h++){
                 int rgb = targetImage.getRGB(h, w);
@@ -61,16 +60,14 @@ public class AsciiArt {
                 int g = (rgb >> 8) & 0xFF;
                 int b = (rgb & 0xff);
                 int grayScale = (r+g+b)/64;
+                // Get the Ascii character of closest brightness from the hashmap and add to the line of text
                 try{char asciiVal = asciiMap.get(grayScale);
                 line += asciiVal;}
                 catch(java.lang.NullPointerException np){
                     line += "Null";
+                }
             }
-                
-            }
-            
            myWriter.write(line);
-
         }
         myWriter.close();
     }
@@ -83,16 +80,13 @@ public class AsciiArt {
     public static void main(String[] args) {
         /*Create an output text file */
         try{
-            String fileName = "corgi.jpeg";
-            // String fileName = args[0];
+            String fileName = args[0];
             BufferedImage targetFile = openFile(fileName);
-            System.out.println("Corgi file opened");
             System.out.print(fileName);
             String newName = outputFile(fileName);
-            System.out.println("File Named");
             System.out.print(newName);
             writeAnscii(targetFile, fileName);
-            // System.out.println("Function called");
+            System.out.println("Text file written");
         }catch(final ArrayIndexOutOfBoundsException e){
             //System.out.println("No file selected");
             return;
