@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
+import java.io.FileWriter;
 
 public class AsciiArt {
 
@@ -44,6 +45,7 @@ public class AsciiArt {
         int width = targetImage.getWidth();
         String outputName  = outputFile(fileName);
         File outputText = new File(outputName);
+        try{FileWriter myWriter = new FileWriter(outputName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
         String mapVals = ".,-~:;=!*#$@";
@@ -62,15 +64,20 @@ public class AsciiArt {
                 try{char asciiVal = asciiMap.get(grayScale);
                 line += asciiVal;}
                 catch(java.lang.NullPointerException np){
-                System.out.println(grayScale);
+                    line += "Null";
             }
-
                 
             }
-            System.out.println(line);
+            
+           myWriter.write(line);
 
         }
-
+        myWriter.close();
+    }
+        
+        catch(IOException e){
+            System.out.println("Not able to write to file");
+        }
 
     }
     public static void main(String[] args) {
