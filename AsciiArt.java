@@ -53,9 +53,9 @@ public class AsciiArt {
                 asciiMap.put(i, mapVals.charAt(i));
         }
         // Iterate through each pixel, convert to a rough grayscale, map to an Ascii value, then write to new file
-        for (int h = 0; h < height; h++){
-            String line = new String();
-            for (int w = 0; w< width; w++){
+        for (int w = 0; w< width; w++){
+            String line = System.lineSeparator() + "";
+            for (int h = 0; h < height; h++){
                 int rgb = targetImage.getRGB(h, w);
                 int r = (rgb >> 16) & 0xFF;
                 int g = (rgb >> 8) & 0xFF;
