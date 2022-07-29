@@ -18,11 +18,15 @@
   <li> Adapt the old file name to create a new file name for the output text file </li>
   <li> Iterate through each pixel and convert to an Ascii character </li>
   </p1>
- <p1> The  </p1>
+ <p1> Once I got the hang of writing methods and the try/execpt clauses required in certain instances, puting this all together was fairly simple and I was able to break each of these three sections into smaller, Googleable questions. One of the most challenging aspects came in the conversion of an RGB int to individual R, G, and B color codes. The use of bitwise operators was new to me, but I thought this was a very cool solution. I came up with my own quick solution to identify brightness. Since RGB color codes are additive, the larger value would be closer to white. By dividing the total value of all R, G, and B intagers by 64, I was able to assign one of the 12 Ascii characters based on the presumed brightness.</p1>
  
 
 <h2> Usage </h2>
 
-<p1> </p1>
+<p1> This script requires one arguement: the relative path and file name to a given image file. To call this script, simply execute `java AsciiArt "YourFileNameHere.jpeg"` This will output a .txt file of the image recreated via Ascii characters.</p1>
+  
 
 <h2> Lessons learned and next steps </h2>
+  <p1> I really enjoyed this project, even if the end result wasn't as perfect as I had anticipated. Ideally, I would like to create a new image file based on the Ascii characters. The txt file can obfuscate the image if the viewing window isn't properly sized. For larger images, I imagine it would be extremely difficult to fit the entire text file on the screen and view the re-created image. Perhaps some resizing might be neccesary. </p1>
+  
+  <p1> I probably haven't handled all possible errors and I'd like to have the output in a more readily appreciated format/view, but this is still my first Java project (other than printing "Hello World!" that is!). </p1>
