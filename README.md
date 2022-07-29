@@ -7,6 +7,22 @@
 
 <h2> Why this project? </h2>
 
-<p1> Many years ago, I took guitar lessons in a small room not much larger than a closet. On one wall was a printed out portrait created from text art. The concept stuck with me and part of me has wanted to do my own self-portait using a similar concept since then. Of course, there a number of different ways to use Ascii characters to create art. </p1>
+<p1> Many years ago, I took guitar lessons in a small room not much larger than a closet. On one wall was a printed out portrait created from text art. The concept stuck with me and part of me has wanted to do my own self-portait using a similar concept since then. Of course, there a number of different ways to use Ascii characters to create art. The idea of using special characters to represent brightness came from the famous <a href="https://www.a1k0n.net/2011/07/20/donut-math.html"> donut code. <a/> </p1>
 
+<p1> Image manipulation isn't something that I had thought too deeply about, nor had any immediate utility for. However, I wanted to do something different than typical beginner projects like building a calculator. Without thinking too deeply about how I'd implement this project, I knew I'd atleast be able to learn how to read/write a file, parse strings (in re-naming the new file), and work with loops in Java.   </p1>
 
+<h2> Design </h2>
+
+<p1> I began this project after glancing at a few other examples of people doing similar image manipulation projects. I couldn't find anything that matched exactly what I was looking for, but I was happy to forge ahead one step at a time. I tried to break this a few basic steps:
+  <li> Open the target image </li>
+  <li> Adapt the old file name to create a new file name for the output text file </li>
+  <li> Iterate through each pixel and convert to an Ascii character </li>
+  </p1>
+ <p1> The  </p1>
+ 
+
+<h2> Usage </h2>
+
+<p1> </p1>
+
+<h2> Lessons learned and next steps </h2>
