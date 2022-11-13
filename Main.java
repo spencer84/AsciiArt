@@ -1,4 +1,6 @@
 import java.io.*;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 
 public class Main {
 
@@ -44,17 +46,34 @@ public class Main {
         }
 
         
+    public static BufferedImage openFile(String fileName){
+        /* Open the file from the input string.
+            * Return the BufferedImage object if it exists.
+        */
+        try{BufferedImage targetImage = ImageIO.read(new File(fileName));
+            return targetImage;
+        }
+
+        catch(IOException e){
+            System.out.println("No file found");
+            return null;
+        }
+        
+        
     }
 
         
     
     public static void main(String[] args){
+        // Read in file
+        String fileName = args[0];
+        BufferedImage targetFile = openFile(fileName);
+        // Check if we need to re-size
         if(needsResize()){
             Resizer resizer = new Resizer();
+            BufferedImage reSizedImage = resizer.r
         }
-    // Do we need to re-size?
-    // If no, then use the AsciiArt converter as defined
-    // Otherwise 
+   
     AsciiArt art = new AsciiArt();
     
     }
