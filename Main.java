@@ -62,19 +62,29 @@ public class Main {
         
     }
 
-        
     
     public static void main(String[] args){
         // Read in file
-        String fileName = args[0];
-        BufferedImage targetFile = openFile(fileName);
-        // Check if we need to re-size
-        if(needsResize()){
-            Resizer resizer = new Resizer();
-            BufferedImage reSizedImage = resizer.r
+        try{String fileName = args[0];
+            BufferedImage targetFile = openFile(fileName);
+            AsciiArt art = new AsciiArt();
+            // Check if we need to re-size
+            if(needsResize()){
+                Resizer resizer = new Resizer();
+                BufferedImage resizedFile = resizer.resize(targetFile);
+                art.writeAscii(resizedFile, fileName);
+            }
+            else{
+                art.writeAscii(targetFile, fileName);
+            }
+            // Convert to ASCII art and write to file
+            
         }
-   
-    AsciiArt art = new AsciiArt();
+        catch(ArrayIndexOutOfBoundsException e){
+            System.out.println("No file path provided.");
+            return;
+        }
+        
     
     }
     
