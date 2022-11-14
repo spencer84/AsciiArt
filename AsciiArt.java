@@ -6,8 +6,9 @@ import java.util.HashMap;
 import java.io.FileWriter;
 
 public class AsciiArt {
+    private static String newFileName;
 
-    public static String outputFile(String fileName) {
+    public static void outputFile(String fileName){
         /* Produce output file name before writing output */
         String asciiString = "_AsciiArt";
         // If there is a . in the file name, split string before renaming
@@ -15,21 +16,21 @@ public class AsciiArt {
             String[] parts = fileName.split("\\.");
             String prefix = parts[0];
             String newName = prefix + asciiString + ".txt"; 
-            return newName;
+            this.newFileName = newName;
         }
         else {
             String newName = fileName + asciiString + ".txt"; 
-            return newName;
+            this.newFileName = newName;
         }
     }
 
     
-    public static void writeAnscii(BufferedImage targetImage, String fileName){
+    public void writeAscii(BufferedImage targetImage, String fileName){
         /* Need to get the height and width of the target image, then parse through */
         int height = targetImage.getHeight();
         int width = targetImage.getWidth();
-        String outputName  = outputFile(fileName);
-        try{FileWriter myWriter = new FileWriter(outputName);
+        outputFile(fileName);
+        try{FileWriter myWriter = new FileWriter(this.newFileName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
         String mapVals = ".,-~:;=!*#$@";
@@ -65,13 +66,10 @@ public class AsciiArt {
     }
     public static void main(String[] args) {
         /*Create an output text file */
-        try{
-            String fileName = args[0];
-            BufferedImage targetFile = openFile(fileName);
-            System.out.print(fileName);
+        try{System.out.print(fileName);
             String newName = outputFile(fileName);
             System.out.print(newName);
-            writeAnscii(targetFile, fileName);
+            writeAscii(targetFile, fileName);
             System.out.println("Text file written");
         }catch(final ArrayIndexOutOfBoundsException e){
             //System.out.println("No file selected");
