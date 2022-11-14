@@ -53,13 +53,10 @@ public class Main {
         try{BufferedImage targetImage = ImageIO.read(new File(fileName));
             return targetImage;
         }
-
         catch(IOException e){
             System.out.println("No file found");
             return null;
         }
-        
-        
     }
 
     
@@ -72,13 +69,13 @@ public class Main {
             if(needsResize()){
                 Resizer resizer = new Resizer();
                 BufferedImage resizedFile = resizer.resize(targetFile);
+                // Convert to ASCII art and write to file
                 art.writeAscii(resizedFile, fileName);
             }
             else{
+                // Convert to ASCII art and write to file
                 art.writeAscii(targetFile, fileName);
             }
-            // Convert to ASCII art and write to file
-            
         }
         catch(ArrayIndexOutOfBoundsException e){
             System.out.println("No file path provided.");

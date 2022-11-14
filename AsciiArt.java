@@ -1,6 +1,4 @@
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.io.FileWriter;
@@ -16,11 +14,11 @@ public class AsciiArt {
             String[] parts = fileName.split("\\.");
             String prefix = parts[0];
             String newName = prefix + asciiString + ".txt"; 
-            this.newFileName = newName;
+            newFileName = newName;
         }
         else {
             String newName = fileName + asciiString + ".txt"; 
-            this.newFileName = newName;
+            newFileName = newName;
         }
     }
 
@@ -30,7 +28,7 @@ public class AsciiArt {
         int height = targetImage.getHeight();
         int width = targetImage.getWidth();
         outputFile(fileName);
-        try{FileWriter myWriter = new FileWriter(this.newFileName);
+        try{FileWriter myWriter = new FileWriter(newFileName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
         String mapVals = ".,-~:;=!*#$@";
@@ -64,19 +62,6 @@ public class AsciiArt {
         }
 
     }
-    public static void main(String[] args) {
-        /*Create an output text file */
-        try{System.out.print(fileName);
-            String newName = outputFile(fileName);
-            System.out.print(newName);
-            writeAscii(targetFile, fileName);
-            System.out.println("Text file written");
-        }catch(final ArrayIndexOutOfBoundsException e){
-            //System.out.println("No file selected");
-            return;
-        }
-        
-        }
     
 
     // /*Upload an image from a given file name*/
