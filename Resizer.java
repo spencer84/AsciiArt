@@ -15,23 +15,14 @@ public class Resizer {
         this.percent = pct;
     }
     
-    public BufferedImage resize(BufferedImage image){
+    public Image resize(BufferedImage image){
         /* Need to get the height and width of the target image, then scale to output */
         setDimensions(image);
         int outputHeight = this.height*(this.percent/100);
         int outputWidth = this.width*(this.percent/100);
         // Try the BufferedImage method to resize
-        Image resized = image.getScaledInstance(outputWidth, outputHeight, image.SCALE_SMOOTH);
-
-        // Iterate through each pixel, convert to average pixel color
-        for (int w = 0; w< width; w++){
-            // For every line of pixels, initialize a new line of text to be written into the file
-            String line = System.lineSeparator() + "";
-            for (int h = 0; h < height; h++){
-                
-            }
-        }
-        return image;
+        Image resized = image.getScaledInstance(outputWidth, outputHeight, Image.SCALE_SMOOTH);
+        return resized;
     }
 
 }
