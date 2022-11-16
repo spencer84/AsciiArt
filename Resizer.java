@@ -15,14 +15,16 @@ public class Resizer {
         this.percent = pct;
     }
     
-    public Image resize(BufferedImage image){
+    public BufferedImage resize(BufferedImage image){
         /* Need to get the height and width of the target image, then scale to output */
         setDimensions(image);
         int outputHeight = this.height*(this.percent/100);
         int outputWidth = this.width*(this.percent/100);
-        // Try the BufferedImage method to resize
+        // Try the Image method to resize
         Image resized = image.getScaledInstance(outputWidth, outputHeight, Image.SCALE_SMOOTH);
-        return resized;
+        // Then convert back to BufferedImage
+        BufferedImage resizedBufferedImage = (BufferedImage) resized;
+        return resizedBufferedImage;
     }
 
 }
