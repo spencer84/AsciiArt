@@ -69,7 +69,7 @@ public class Main {
             // Check if we need to re-size
             if(needsResize()){
                 Resizer resizer = new Resizer();
-                Image resizedFile = resizer.resize(targetFile);
+                BufferedImage resizedFile = resizer.resize(targetFile);
                 // Convert to ASCII art and write to file
                 art.writeAscii(resizedFile, fileName);
             }
