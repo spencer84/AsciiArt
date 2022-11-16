@@ -1,6 +1,7 @@
 import java.io.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.awt.*;
 
 public class Main {
 
@@ -68,7 +69,7 @@ public class Main {
             // Check if we need to re-size
             if(needsResize()){
                 Resizer resizer = new Resizer();
-                BufferedImage resizedFile = resizer.resize(targetFile);
+                Image resizedFile = resizer.resize(targetFile);
                 // Convert to ASCII art and write to file
                 art.writeAscii(resizedFile, fileName);
             }
