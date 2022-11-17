@@ -15,8 +15,9 @@ public class Resizer {
         this.percent = pct;
     }
     
-    public BufferedImage resize(BufferedImage image){
+    public BufferedImage resize(int pct, BufferedImage image){
         /* Need to get the height and width of the target image, then scale to output */
+        setPercent(pct);
         setDimensions(image);
         int outputHeight = this.height*(this.percent/100);
         int outputWidth = this.width*(this.percent/100);

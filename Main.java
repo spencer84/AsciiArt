@@ -68,8 +68,9 @@ public class Main {
             AsciiArt art = new AsciiArt();
             // Check if we need to re-size
             if(needsResize()){
+                int newSize = newSize();
                 Resizer resizer = new Resizer();
-                BufferedImage resizedFile = resizer.resize(targetFile);
+                BufferedImage resizedFile = resizer.resize(newSize, targetFile);
                 // Convert to ASCII art and write to file
                 art.writeAscii(resizedFile, fileName);
             }
