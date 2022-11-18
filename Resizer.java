@@ -32,8 +32,9 @@ public class Resizer {
         // Try the Image method to resize
         Image resized = image.getScaledInstance(outputWidth, outputHeight, Image.SCALE_SMOOTH);
         // Then convert back to BufferedImage
-        BufferedImage resizedBufferedImage = (BufferedImage) resized;
-        return resizedBufferedImage;
+        BufferedImage outputImage = new BufferedImage(outputWidth, outputHeight, BufferedImage.TYPE_INT_RGB);
+        outputImage.getGraphics().drawImage(resized, 0, 0, null);
+        return outputImage;
     }
 
 }

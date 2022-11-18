@@ -31,6 +31,7 @@ public class AsciiArt {
         try{FileWriter myWriter = new FileWriter(newFileName);
         // Create a HashMap and add Ascii Characters corresponding to brightness
         HashMap <Integer,Character> asciiMap = new HashMap <Integer,Character>();
+        // Map values differently according to text background
         String mapVals = ".,-~:;=!*#$@";
         for (int i = 0;i < mapVals.length(); i++){
                 asciiMap.put(i, mapVals.charAt(i));
