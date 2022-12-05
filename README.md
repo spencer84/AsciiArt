@@ -23,7 +23,7 @@
 
 <h2> Usage </h2>
 
-<p1> This script requires one arguement: the relative path and file name to a given image file. To call this script, simply execute `java AsciiArt "YourFileNameHere.jpeg"` This will output a .txt file of the image recreated via Ascii characters.</p1>
+<p1> This script requires one arguement: the relative path and file name to a given image file. To call this script, simply execute `java AsciiArt "YourFileNameHere.jpeg"` If a vaild file path has been provided, the program will prompt the user to determine if the image should be resized. Inputting 'y' for yes returns a separate prompt for the percentage (%) to be rescaled. An integer between 1 and 1000, 1% and 1000%, is accepted. Either resizing or not will output a .txt file of the image recreated via Ascii characters </p1>
   
 
 <h2> Lessons learned and next steps </h2>
