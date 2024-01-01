@@ -8,8 +8,12 @@ import java.awt.Graphics2D;
 public class AsciiArt {
     private static String newFileName;
     public static String mapVals = ".,-~:;=!*#$@";
-    public static ArrayList<BufferedImage> ASCIIGraphics;
+    public static ArrayList<BufferedImage> ASCIIGraphics = new ArrayList<BufferedImage>();
 
+    // Add constructor method
+    public AsciiArt(){
+        getASCIIGraphics();
+    }
 
     // Create graphics for each ASCII character
     public static void getASCIIGraphics(){
