@@ -1,10 +1,28 @@
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.io.FileWriter;
+import java.awt.Graphics2D;
 
 public class AsciiArt {
     private static String newFileName;
+    public static String mapVals = ".,-~:;=!*#$@";
+    public static ArrayList<BufferedImage> ASCIIGraphics;
+
+
+    // Create graphics for each ASCII character
+    public static void getASCIIGraphics(){
+            Graphics2D asciiChar;
+            BufferedImage img = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+            asciiChar = img.createGraphics();
+            for (int i = 0;i < mapVals.length(); i++){
+            asciiChar.drawString(mapVals.substring(i, i+1),0,8);
+            asciiChar.dispose();
+            ASCIIGraphics.add(img);
+        }  
+    }
+    
 
     public static void outputFile(String fileName){
         /* Produce output file name before writing output */
